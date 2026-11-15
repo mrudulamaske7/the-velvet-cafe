@@ -4,6 +4,7 @@ import { Bunting } from "@/components/site/bunting";
 import { Polaroid } from "@/components/site/polaroid";
 import { menu } from "@/data/menu";
 import { photos } from "@/data/photos";
+import { playCategorySound } from "@/hooks/use-sound";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
@@ -188,6 +189,7 @@ function Index() {
                 <Link
                   to="/menu"
                   hash={c.id}
+                  onClick={() => playCategorySound(c.id)}
                   className="flex items-baseline gap-3 py-2.5 text-lg transition-colors hover:text-primary"
                 >
                   <span>{c.title}</span>

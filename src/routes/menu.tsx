@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, Volume2, VolumeX } from "lucide-react";
 import { filterMenu, menu, type Diet, type DietFilter } from "@/data/menu";
+import { playCategorySound, useSoundToggle } from "@/hooks/use-sound";
 import { cn } from "@/lib/utils";
 import { Bunting } from "@/components/site/bunting";
 
@@ -49,6 +50,7 @@ function DietMark({ diet }: { diet: Diet }) {
 function MenuPage() {
   const [diet, setDiet] = useState<DietFilter>("all");
   const [query, setQuery] = useState("");
+  const { isMuted, toggle } = useSoundToggle();
   const visible = useMemo(() => filterMenu(menu, diet, query), [diet, query]);
 
   const sections = [
@@ -60,7 +62,7 @@ function MenuPage() {
     <div className="lamp-glow">
       <Bunting className="mt-[4.75rem]" />
       <section className="mx-auto max-w-6xl px-5 pb-10 pt-8 md:pt-12">
-        <p className="font-hand text-2xl text-leaf">pick one. or three.</p>
+        <p className="font-hand text-2xl text-leaf">pick one. or three. (tap a category — hear the kitchen)</p>
         <h1 className="mt-2 text-5xl md:text-7xl">
           The S'WICH <em className="text-primary">menu</em>
         </h1>
@@ -102,12 +104,22 @@ function MenuPage() {
               <a
                 key={c.id}
                 href={`#${c.id}`}
+                onClick={() => playCategorySound(c.id)}
                 className="whitespace-nowrap rounded px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
                 {c.title}
               </a>
             ))}
           </nav>
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={isMuted ? "Turn kitchen sounds on" : "Turn kitchen sounds off"}
+            title={isMuted ? "Kitchen sounds off" : "Kitchen sounds on"}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-primary"
+          >
+            {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+          </button>
         </div>
       </div>
 
