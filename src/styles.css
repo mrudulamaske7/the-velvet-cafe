@@ -9,11 +9,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Design: a dim, lamp-lit cafe. Espresso-dark surfaces, cream text, amber candle glow. */
+/* Design: S'WICH at night. Charcoal ceiling dark, warm amber sign glow, palm-leaf green,
+ * festival bunting colours, polaroid paper for real photos. */
 
 @theme inline {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -41,6 +43,14 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
   --color-glow: var(--glow);
+  --color-leaf: var(--leaf);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-flag-red: var(--flag-red);
+  --color-flag-yellow: var(--flag-yellow);
+  --color-flag-blue: var(--flag-blue);
+  --color-flag-green: var(--flag-green);
+  --color-flag-orange: var(--flag-orange);
   --color-veg: var(--veg);
   --color-nonveg: var(--nonveg);
   --color-chart-1: var(--chart-1);
@@ -62,34 +72,43 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.145 0.012 55);
-  --foreground: oklch(0.92 0.03 80);
-  --card: oklch(0.19 0.016 55);
-  --card-foreground: oklch(0.92 0.03 80);
-  --popover: oklch(0.19 0.016 55);
-  --popover-foreground: oklch(0.92 0.03 80);
-  --primary: oklch(0.78 0.13 70);
-  --primary-foreground: oklch(0.17 0.02 55);
-  --secondary: oklch(0.24 0.02 55);
-  --secondary-foreground: oklch(0.92 0.03 80);
-  --muted: oklch(0.22 0.016 55);
-  --muted-foreground: oklch(0.68 0.03 70);
-  --accent: oklch(0.27 0.03 60);
-  --accent-foreground: oklch(0.92 0.03 80);
+  --radius: 0.375rem;
+  --background: oklch(0.155 0.008 110);
+  --foreground: oklch(0.93 0.025 85);
+  --card: oklch(0.195 0.01 110);
+  --card-foreground: oklch(0.93 0.025 85);
+  --popover: oklch(0.195 0.01 110);
+  --popover-foreground: oklch(0.93 0.025 85);
+  --primary: oklch(0.8 0.14 72);
+  --primary-foreground: oklch(0.18 0.02 60);
+  --secondary: oklch(0.24 0.012 110);
+  --secondary-foreground: oklch(0.93 0.025 85);
+  --muted: oklch(0.22 0.01 110);
+  --muted-foreground: oklch(0.7 0.025 85);
+  --accent: oklch(0.27 0.02 130);
+  --accent-foreground: oklch(0.93 0.025 85);
   --destructive: oklch(0.6 0.2 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.92 0.03 80 / 12%);
-  --input: oklch(0.92 0.03 80 / 16%);
-  --ring: oklch(0.78 0.13 70 / 60%);
-  --glow: oklch(0.82 0.15 70);
+  --border: oklch(0.93 0.025 85 / 12%);
+  --input: oklch(0.93 0.025 85 / 18%);
+  --ring: oklch(0.8 0.14 72 / 60%);
+  --glow: oklch(0.86 0.15 78);
+  --leaf: oklch(0.66 0.13 145);
+  --paper: oklch(0.95 0.012 85);
+  --ink: oklch(0.25 0.02 60);
   --veg: oklch(0.68 0.15 150);
   --nonveg: oklch(0.6 0.17 32);
+  --flag-red: oklch(0.6 0.19 25);
+  --flag-yellow: oklch(0.86 0.15 92);
+  --flag-blue: oklch(0.52 0.14 255);
+  --flag-green: oklch(0.62 0.15 150);
+  --flag-orange: oklch(0.72 0.16 55);
 
-  --gradient-lamp: radial-gradient(60% 50% at 50% 0%, oklch(0.78 0.13 70 / 18%), transparent 70%);
-  --gradient-fade: linear-gradient(to top, var(--background) 8%, oklch(0.145 0.012 55 / 70%) 45%, oklch(0.145 0.012 55 / 30%));
-  --shadow-glow: 0 0 40px -8px oklch(0.78 0.13 70 / 55%);
-  --shadow-card: 0 30px 60px -30px oklch(0 0 0 / 70%);
+  --gradient-lamp: radial-gradient(55% 45% at 50% 0%, oklch(0.8 0.14 72 / 13%), transparent 70%);
+  --gradient-fade: linear-gradient(to top, var(--background) 8%, transparent);
+  --shadow-glow: 0 0 34px -10px oklch(0.8 0.14 72 / 60%);
+  --shadow-card: 0 24px 50px -28px oklch(0 0 0 / 80%);
+  --shadow-photo: 0 18px 30px -14px oklch(0 0 0 / 75%), 0 2px 4px oklch(0 0 0 / 40%);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -136,18 +155,55 @@
 }
 
 @utility text-glow {
-  text-shadow: 0 0 24px oklch(0.78 0.13 70 / 45%);
+  text-shadow: 0 0 18px oklch(0.8 0.14 72 / 55%), 0 0 2px oklch(0.86 0.15 78 / 60%);
+}
+
+@utility sign-glow {
+  color: var(--glow);
+  text-shadow:
+    0 0 6px oklch(0.86 0.15 78 / 70%),
+    0 0 28px oklch(0.8 0.14 72 / 55%),
+    0 0 70px oklch(0.8 0.14 72 / 30%);
+}
+
+@utility polaroid {
+  position: relative;
+  display: block;
+  background-color: var(--paper);
+  padding: 0.6rem 0.6rem 0.4rem;
+  box-shadow: var(--shadow-photo);
+  transition: transform 0.4s ease;
+}
+
+@utility tape {
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  width: 5.5rem;
+  height: 1.5rem;
+  translate: -50% 0;
+  rotate: -3deg;
+  background-color: oklch(0.93 0.04 90 / 55%);
+  box-shadow: 0 1px 2px oklch(0 0 0 / 20%);
+}
+
+@utility flag {
+  display: block;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.5rem;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  opacity: 0.9;
 }
 
 @utility btn-glow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.85rem 1.6rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
+  border-radius: var(--radius);
+  padding: 0.85rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
   background-color: var(--primary);
   color: var(--primary-foreground);
   box-shadow: var(--shadow-glow);
@@ -155,7 +211,7 @@
   &:hover {
     transform: translateY(-1px);
     background-color: var(--glow);
-    box-shadow: 0 0 60px -6px oklch(0.78 0.13 70 / 70%);
+    box-shadow: 0 0 50px -8px oklch(0.8 0.14 72 / 70%);
   }
 }
 
@@ -163,12 +219,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.85rem 1.6rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid var(--input);
   color: var(--foreground);
   transition: border-color 0.25s, color 0.25s;
   &:hover {
@@ -179,9 +234,9 @@
 
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--primary);
 }
@@ -217,10 +272,10 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
+    font-weight: 400;
   }
 
   ::selection {
-    background: oklch(0.78 0.13 70 / 35%);
+    background: oklch(0.8 0.14 72 / 35%);
   }
 }

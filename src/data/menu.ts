@@ -150,6 +150,6 @@ export function filterMenu(categories: MenuCategory[], diet: DietFilter, query: 
 }
 
 export const CAFE = {
-  name: "The Lantern Café",
-  tagline: "Low lights. Warm toasties. Long conversations.",
+  name: "S'WICH",
+  tagline: "Toasted sandwiches, momos & shakes under the fairy lights.",
 };

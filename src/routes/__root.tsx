@@ -83,10 +83,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Lantern Café" },
-      { name: "description", content: "A dim-lit cafe serving grilled sandwiches, shakes, momos and pizza." },
-      { property: "og:title", content: "The Lantern Café" },
-      { property: "og:description", content: "A dim-lit cafe serving grilled sandwiches, shakes, momos and pizza." },
+      { title: "S'WICH" },
+      { name: "description", content: "S'WICH — grilled sandwiches, momos, pizza and shakes under fairy lights and palm leaves." },
+      { property: "og:title", content: "S'WICH" },
+      { property: "og:description", content: "Grilled sandwiches, momos, pizza and shakes under fairy lights and palm leaves." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -100,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Serif+Display:ital@0;1&family=Karla:wght@400;500;700&display=swap",
       },
     ],
   }),

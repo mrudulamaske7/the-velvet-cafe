@@ -31,4 +31,5 @@ use the editor.
 
 ## Project rules
 - Menu content lives in `src/data/menu.ts` as typed data with a per-item veg/non-veg flag; pages render from it so menu edits touch one file.
-- Shared header/footer wrap `<Outlet />` in `src/routes/__root.tsx`; visual tokens and button styles (`btn-glow`, `btn-quiet`) are defined in `src/styles.css`.
+- Shared header/footer wrap `<Outlet />` in `src/routes/__root.tsx`; visual tokens and utilities (`btn-glow`, `btn-quiet`, `polaroid`, `flag`, `sign-glow`) are defined in `src/styles.css`.
+- All site photos are referenced through `src/data/photos.ts` (CDN asset pointers for owner photos, imports for generated ones) so swapping a photo touches one file.

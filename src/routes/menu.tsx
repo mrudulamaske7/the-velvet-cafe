@@ -3,17 +3,18 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { filterMenu, menu, type Diet, type DietFilter } from "@/data/menu";
 import { cn } from "@/lib/utils";
+import { Bunting } from "@/components/site/bunting";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "Menu — The Lantern Café" },
+      { title: "Menu — S'WICH" },
       {
         name: "description",
         content:
-          "Veg and non-veg sandwiches, shakes, pitchers, fries, salads, momos and 10\" pizzas at The Lantern Café.",
+          "Veg and non-veg sandwiches, shakes, pitchers, fries, salads, momos and 10\" pizzas at S'WICH.",
       },
-      { property: "og:title", content: "Menu — The Lantern Café" },
+      { property: "og:title", content: "Menu — S'WICH" },
       {
         property: "og:description",
         content: "Sandwiches, shakes, pitchers, sides, salads, momos and pizzas.",
@@ -57,16 +58,17 @@ function MenuPage() {
 
   return (
     <div className="lamp-glow">
-      <section className="mx-auto max-w-6xl px-5 pb-10 pt-32 md:pt-40">
-        <p className="eyebrow">The menu</p>
-        <h1 className="mt-4 text-5xl font-light tracking-tight md:text-7xl">
-          Tonight we're <em className="text-primary text-glow">serving…</em>
+      <Bunting className="mt-[4.75rem]" />
+      <section className="mx-auto max-w-6xl px-5 pb-10 pt-8 md:pt-12">
+        <p className="font-hand text-2xl text-leaf">pick one. or three.</p>
+        <h1 className="mt-2 text-5xl md:text-7xl">
+          The S'WICH <em className="text-primary">menu</em>
         </h1>
       </section>
 
       <div className="sticky top-16 z-40 border-y border-border/60 bg-background/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-3 md:flex-row md:items-center">
-          <div className="flex shrink-0 gap-1 rounded-full border border-border p-1">
+          <div className="flex shrink-0 gap-1 rounded-md border border-border p-1">
             {filters.map((f) => (
               <button
                 key={f.value}
@@ -74,7 +76,7 @@ function MenuPage() {
                 onClick={() => setDiet(f.value)}
                 aria-pressed={diet === f.value}
                 className={cn(
-                  "flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+                  "flex items-center gap-2 rounded px-4 py-1.5 text-sm font-medium transition-colors",
                   diet === f.value
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground",
@@ -92,7 +94,7 @@ function MenuPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search the menu"
-              className="w-full rounded-full border border-input bg-transparent py-2 pl-10 pr-4 text-sm outline-none placeholder:text-muted-foreground focus:border-primary"
+              className="w-full rounded-md border border-input bg-transparent py-2 pl-10 pr-4 text-sm outline-none placeholder:text-muted-foreground focus:border-primary"
             />
           </label>
           <nav className="flex gap-1 overflow-x-auto text-xs md:ml-auto">
@@ -100,7 +102,7 @@ function MenuPage() {
               <a
                 key={c.id}
                 href={`#${c.id}`}
-                className="whitespace-nowrap rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                className="whitespace-nowrap rounded px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
                 {c.title}
               </a>
@@ -122,7 +124,7 @@ function MenuPage() {
           return (
             <section key={s.id} className="mb-20 last:mb-0">
               <div className="mb-10 flex items-center gap-5">
-                <h2 className="font-display text-3xl italic text-primary md:text-4xl">{s.title}</h2>
+                <h2 className="font-display text-3xl text-primary md:text-4xl">{s.title}</h2>
                 <span className="h-px flex-1 bg-border" />
               </div>
               <div className="columns-1 gap-10 md:columns-2">
@@ -130,10 +132,10 @@ function MenuPage() {
                   <article
                     key={c.id}
                     id={c.id}
-                    className="mb-10 scroll-mt-48 break-inside-avoid rounded-2xl border border-border/60 bg-card/60 p-7 shadow-card"
+                    className="mb-10 scroll-mt-48 break-inside-avoid rounded-md border border-border/70 bg-card p-7 shadow-card"
                   >
                     <header className="mb-5 flex items-baseline justify-between gap-4 border-b border-border/60 pb-4">
-                      <h3 className="text-2xl font-normal">{c.title}</h3>
+                      <h3 className="text-2xl">{c.title}</h3>
                       <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                         {c.note ?? `${c.items.length} items`}
                       </span>
