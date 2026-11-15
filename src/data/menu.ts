@@ -151,5 +151,5 @@ export function filterMenu(categories: MenuCategory[], diet: DietFilter, query: 
 
 export const CAFE = {
   name: "S'WICH",
-  tagline: "Toasted sandwiches, momos & shakes under the fairy lights.",
+  tagline: "Good bread. Warm lights. Slow evenings.",
 };

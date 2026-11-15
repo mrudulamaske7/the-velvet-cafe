@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Bunting } from "@/components/site/bunting";
 import { Polaroid } from "@/components/site/polaroid";
-import { menu } from "@/data/menu";
+import { FindUsDialog } from "@/components/site/find-us";
+import { OrderApps } from "@/components/site/order-apps";
+import { branches } from "@/data/branches";
+import { CAFE, menu } from "@/data/menu";
 import { photos } from "@/data/photos";
 import { playCategorySound } from "@/hooks/use-sound";
 import { cn } from "@/lib/utils";
@@ -14,7 +17,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Grilled sandwiches, momos, 10\" pizzas and thick shakes at S'WICH — the cafe with the fairy lights, palm leaves and bunting.",
+          "S'WICH in Kanchanwadi and Dashmesh Nagar — grilled sandwiches, momos, 10\" pizzas and shakes. Order on Zomato, Swiggy or District.",
       },
       { property: "og:title", content: "S'WICH — Sandwiches, Momos, Pizza & Shakes" },
       {
@@ -51,76 +54,89 @@ const dishes: Dish[] = [
   { img: photos.saladBowl, name: "Garden Salad", note: "for the one being good" },
 ];
 
-const corners = [
-  { src: photos.gardenSeating, caption: "the garden corner", tilt: -3 },
-  { src: photos.counterPlants, caption: "say hi at the counter", tilt: 2, imgClassName: "aspect-square object-top" },
-  { src: photos.pizzaCounter, caption: "pizza o'clock", tilt: -1.5 },
-  { src: photos.lanterns, caption: "lanterns + palms", tilt: 3 },
-];
-
 function Index() {
   const total = menu.reduce((n, c) => n + c.items.length, 0);
 
   return (
     <>
-      {/* Opening: one real photo of the room, full width, with the sign glowing over it */}
+      {/* Opening: the real storefront, dimmed so the sign-glow title reads clearly */}
       <section className="relative flex min-h-[92svh] items-end overflow-hidden">
         <img
-          src={photos.interiorWide}
-          alt="Inside S'WICH at night — copper lamps, palms and bunting over the tables"
-          className="absolute inset-0 h-full w-full object-cover"
+          src={photos.storefrontHero}
+          alt="The glowing S'WICH sign with hanging plants and bunting over the entrance"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-[50%_30%] blur-[2px] brightness-[0.55] saturate-[0.9]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/20" />
+        <div className="absolute inset-0 bg-background/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 md:pb-24">
           <Bunting className="mb-8 max-w-md" count={22} />
-          <p className="font-hand text-2xl text-leaf">a little cafe, after dark</p>
+          <p className="font-hand text-2xl text-leaf">sandwiches · momos · pizza · shakes</p>
           <h1 className="mt-2 font-display text-7xl leading-none tracking-[0.06em] sign-glow sm:text-8xl lg:text-[9rem]">
             S'WICH
           </h1>
-          <p className="mt-7 max-w-lg text-lg leading-relaxed text-foreground/90">
-            Copper lamps low over the tables, palms in every corner, bunting strung across the
-            roof. The kind of place where one coffee turns into three and nobody checks the time.
+          <p className="mt-6 max-w-lg font-display text-2xl leading-snug text-foreground md:text-3xl">
+            {CAFE.tagline}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link to="/menu" className="btn-glow">
               See the menu <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/visit" className="btn-quiet">
-              How to find us
-            </Link>
+            <FindUsDialog className="btn-quiet cursor-pointer bg-background/40 backdrop-blur-sm">
+              <MapPin className="h-4 w-4" /> How to find us
+            </FindUsDialog>
+          </div>
+          <div className="mt-8">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+              Order straight from
+            </p>
+            <OrderApps />
           </div>
         </div>
       </section>
 
-      {/* The room, up close */}
+      {/* Two branches, two moods */}
       <section className="border-t border-border/70 bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
-          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start">
-            <div className="md:sticky md:top-28">
-              <p className="eyebrow">Inside S'WICH</p>
-              <h2 className="mt-3 text-4xl leading-tight md:text-5xl">
-                Low lights, big plants, <em className="text-primary">long chats.</em>
-              </h2>
-              <p className="mt-5 max-w-sm leading-relaxed text-muted-foreground">
-                Copper lamps over every table, paper lanterns, bunting across the roof and more
-                palms than we can count. Grab a corner seat, order a pitcher, and nobody's
-                going to rush you out.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-4">
-              {corners.map((c, i) => (
-                <Polaroid
-                  key={c.caption}
-                  src={c.src}
-                  alt={c.caption}
-                  caption={c.caption}
-                  tilt={c.tilt}
-                  tape={i % 2 === 0}
-                  className={i % 2 === 1 ? "mt-10" : ""}
-                  imgClassName={cn("aspect-[4/5]", c.imgClassName)}
-                />
-              ))}
-            </div>
+          <p className="eyebrow">Two cafes</p>
+          <h2 className="mt-3 text-4xl leading-tight md:text-5xl">
+            Same sandwiches, <em className="text-primary">two different moods.</em>
+          </h2>
+          <div className="mt-14 space-y-24">
+            {branches.map((b, bi) => (
+              <article
+                key={b.id}
+                className="grid gap-10 md:grid-cols-[0.75fr_1.25fr] md:items-start"
+              >
+                <div className={cn("md:sticky md:top-28", bi % 2 === 1 && "md:order-2")}>
+                  <p className="font-hand text-2xl text-leaf">{b.label}</p>
+                  <h3 className="mt-1 text-4xl md:text-5xl">{b.name}</h3>
+                  <p className="mt-4 max-w-sm leading-relaxed text-muted-foreground">{b.mood}</p>
+                  <a
+                    href={b.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
+                  >
+                    <MapPin className="h-4 w-4" /> Directions to {b.name}
+                  </a>
+                </div>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-4">
+                  {b.photos.map((p, i) => (
+                    <Polaroid
+                      key={p.src}
+                      src={p.src}
+                      alt={`${b.name} — ${p.caption}`}
+                      caption={p.caption}
+                      tilt={[-3, 2, -1.5, 3][i % 4]}
+                      tape={i % 2 === 0}
+                      className={i % 2 === 1 ? "mt-10" : ""}
+                      imgClassName="aspect-[4/5]"
+                    />
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -18,6 +18,13 @@ import sandwichSmoothie from "@/assets/cafe/sandwich-smoothie-berries.jpg.asset.
 import grilledCut from "@/assets/cafe/grilled-sandwich-cut.jpg.asset.json";
 import saladBowl from "@/assets/cafe/salad-bowl.jpg.asset.json";
 import tableSpread from "@/assets/cafe/full-table-spread.jpg.asset.json";
+import storefrontHero from "@/assets/cafe/branches/storefront-hero.jpg.asset.json";
+import dashmeshStorefront from "@/assets/cafe/branches/dashmesh-storefront.jpg.asset.json";
+import dashmeshSeating from "@/assets/cafe/branches/dashmesh-seating-wide.jpg.asset.json";
+import dashmeshFacade from "@/assets/cafe/branches/dashmesh-facade-plants.jpg.asset.json";
+import dashmeshShakes from "@/assets/cafe/branches/dashmesh-sign-shakes.jpg.asset.json";
+import kanchanwadiLanterns from "@/assets/cafe/branches/kanchanwadi-lanterns-night.jpg.asset.json";
+import kanchanwadiCounter from "@/assets/cafe/branches/kanchanwadi-counter.jpg.asset.json";
 import paneerSandwich from "@/assets/food-paneer-sandwich.jpg";
 import chickenTikka from "@/assets/food-chicken-tikka.jpg";
 import oreoShake from "@/assets/food-oreo-shake.jpg";
@@ -43,6 +50,13 @@ export const photos = {
   grilledCut: grilledCut.url,
   saladBowl: saladBowl.url,
   tableSpread: tableSpread.url,
+  storefrontHero: storefrontHero.url,
+  dashmeshStorefront: dashmeshStorefront.url,
+  dashmeshSeating: dashmeshSeating.url,
+  dashmeshFacade: dashmeshFacade.url,
+  dashmeshShakes: dashmeshShakes.url,
+  kanchanwadiLanterns: kanchanwadiLanterns.url,
+  kanchanwadiCounter: kanchanwadiCounter.url,
   paneerSandwich,
   chickenTikka,
   oreoShake,
