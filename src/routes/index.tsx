@@ -128,7 +128,7 @@ function Index() {
                       src={p.src}
                       alt={`${b.name} — ${p.caption}`}
                       caption={p.caption}
-                      tilt={[-3, 2, -1.5, 3][i % 4]}
+                      tilt={[-3, 2, -1.5, 3][i % 4] ?? 0}
                       tape={i % 2 === 0}
                       className={i % 2 === 1 ? "mt-10" : ""}
                       imgClassName="aspect-[4/5]"
