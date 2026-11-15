@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Menu content lives in `src/data/menu.ts` as typed data with a per-item veg/non-veg flag; pages render from it so menu edits touch one file.
+- Shared header/footer wrap `<Outlet />` in `src/routes/__root.tsx`; visual tokens and button styles (`btn-glow`, `btn-quiet`) are defined in `src/styles.css`.
