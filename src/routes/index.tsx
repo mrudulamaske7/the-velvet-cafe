@@ -31,27 +31,27 @@ type Dish = { img: string; name: string; note: string; className?: string; big?:
 
 const dishes: Dish[] = [
   {
-    img: photos.paneerSandwich,
-    name: "Paneer Tikka Masala",
-    note: "the one everyone orders first",
+    img: photos.tableSpread,
+    name: "The full spread",
+    note: "how a table here usually ends up",
     big: true,
     className: "md:col-span-2 md:row-span-2",
   },
   { img: photos.tandooriPizza, name: "Veg Tandoori Paneer Pizza", note: '10", made to share' },
-  { img: photos.oreoShake, name: "Oreo Shake", note: "or get the pitcher" },
-  { img: photos.friedMomos, name: "Kurkure Momos", note: "crunchy outside" },
+  { img: photos.sandwichSmoothie, name: "Sandwich & a Shake", note: "the classic pairing" },
+  { img: photos.vegMomos, name: "Steamed Veg Momos", note: "straight from the bamboo" },
   { img: photos.cheeseFries, name: "Peri Cheese Fries", note: "extra peri, trust us" },
   {
-    img: photos.chickenTikka,
-    name: "Chicken Tikka Sandwich",
-    note: "+ popcorn + cold coffee",
+    img: photos.grilledCut,
+    name: "Grilled Sandwiches",
+    note: "toasted till the edges crunch",
     className: "md:col-span-2",
   },
-  { img: photos.tray, name: "Sandwiches & Momos", note: "a real Friday tray" },
+  { img: photos.saladBowl, name: "Garden Salad", note: "for the one being good" },
 ];
 
 const corners = [
-  { src: photos.interior, caption: "copper lamps & black chairs", tilt: -3 },
+  { src: photos.gardenSeating, caption: "the garden corner", tilt: -3 },
   { src: photos.counterPlants, caption: "say hi at the counter", tilt: 2, imgClassName: "aspect-square object-top" },
   { src: photos.pizzaCounter, caption: "pizza o'clock", tilt: -1.5 },
   { src: photos.lanterns, caption: "lanterns + palms", tilt: 3 },
@@ -62,53 +62,64 @@ function Index() {
 
   return (
     <>
-      {/* Opening: the sign, a line about the place, and real photos pinned up */}
-      <section className="relative overflow-hidden pt-16 lamp-glow">
-        <Bunting className="mt-3" />
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-10 md:grid-cols-[1.05fr_1fr] md:pb-28 md:pt-14">
-          <div>
-            <p className="font-hand text-2xl text-leaf">sandwiches · momos · pizza · shakes</p>
-            <h1 className="mt-3 font-display text-7xl leading-none tracking-[0.06em] sign-glow sm:text-8xl lg:text-[9rem]">
-              S'WICH
-            </h1>
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-foreground/85">
-              A little sandwich place with fairy lights in the ceiling, palm leaves in every
-              corner and a menu that's honestly too long. Come hungry, stay late.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link to="/menu" className="btn-glow">
-                See the menu <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/visit" className="btn-quiet">
-                How to find us
-              </Link>
-            </div>
+      {/* Opening: one real photo of the room, full width, with the sign glowing over it */}
+      <section className="relative flex min-h-[92svh] items-end overflow-hidden">
+        <img
+          src={photos.interiorWide}
+          alt="Inside S'WICH at night — copper lamps, palms and bunting over the tables"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/20" />
+        <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 md:pb-24">
+          <Bunting className="mb-8 max-w-md" count={22} />
+          <p className="font-hand text-2xl text-leaf">a little cafe, after dark</p>
+          <h1 className="mt-2 font-display text-7xl leading-none tracking-[0.06em] sign-glow sm:text-8xl lg:text-[9rem]">
+            S'WICH
+          </h1>
+          <p className="mt-7 max-w-lg text-lg leading-relaxed text-foreground/90">
+            Copper lamps low over the tables, palms in every corner, bunting strung across the
+            roof. The kind of place where one coffee turns into three and nobody checks the time.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link to="/menu" className="btn-glow">
+              See the menu <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/visit" className="btn-quiet">
+              How to find us
+            </Link>
           </div>
+        </div>
+      </section>
 
-          <div className="relative mx-auto h-[480px] w-full max-w-[500px] sm:h-[560px]">
-            <Polaroid
-              src={photos.storefront}
-              alt="S'WICH entrance lit up at night"
-              caption="the front, after dark"
-              tilt={-4}
-              className="absolute left-0 top-2 w-[62%]"
-              imgClassName="aspect-[6/5]"
-            />
-            <Polaroid
-              src={photos.counterSign}
-              alt="Glowing S'WICH sign above the counter"
-              caption="our sign ✶"
-              tilt={5}
-              className="absolute right-0 top-10 w-[42%]"
-              imgClassName="aspect-[3/5]"
-            />
-            <Polaroid
-              src={photos.lanterns}
-              alt="Paper lanterns, palm leaves and bunting inside the cafe"
-              tilt={-1}
-              className="absolute bottom-0 left-[14%] w-[52%]"
-              imgClassName="aspect-[6/5]"
-            />
+      {/* The room, up close */}
+      <section className="border-t border-border/70 bg-card/40">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
+          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+            <div className="md:sticky md:top-28">
+              <p className="eyebrow">Inside S'WICH</p>
+              <h2 className="mt-3 text-4xl leading-tight md:text-5xl">
+                Low lights, big plants, <em className="text-primary">long chats.</em>
+              </h2>
+              <p className="mt-5 max-w-sm leading-relaxed text-muted-foreground">
+                Copper lamps over every table, paper lanterns, bunting across the roof and more
+                palms than we can count. Grab a corner seat, order a pitcher, and nobody's
+                going to rush you out.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-4">
+              {corners.map((c, i) => (
+                <Polaroid
+                  key={c.caption}
+                  src={c.src}
+                  alt={c.caption}
+                  caption={c.caption}
+                  tilt={c.tilt}
+                  tape={i % 2 === 0}
+                  className={i % 2 === 1 ? "mt-10" : ""}
+                  imgClassName={cn("aspect-[4/5]", c.imgClassName)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -160,39 +171,6 @@ function Index() {
                 Full menu <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* The space */}
-      <section className="border-t border-border/70 bg-card/40">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
-          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start">
-            <div className="md:sticky md:top-28">
-              <p className="eyebrow">Inside S'WICH</p>
-              <h2 className="mt-3 text-4xl leading-tight md:text-5xl">
-                Low lights, big plants, <em className="text-primary">long chats.</em>
-              </h2>
-              <p className="mt-5 max-w-sm leading-relaxed text-muted-foreground">
-                Copper lamps over every table, paper lanterns, bunting across the roof and more
-                palms than we can count. Grab a corner seat, order a pitcher, and nobody's
-                going to rush you out.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-4">
-              {corners.map((c, i) => (
-                <Polaroid
-                  key={c.caption}
-                  src={c.src}
-                  alt={c.caption}
-                  caption={c.caption}
-                  tilt={c.tilt}
-                  tape={i % 2 === 0}
-                  className={i % 2 === 1 ? "mt-10" : ""}
-                  imgClassName={cn("aspect-[4/5]", c.imgClassName)}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
